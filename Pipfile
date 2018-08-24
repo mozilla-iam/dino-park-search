@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+ipdb = "*"
+
+[packages]
+flask = "*"
+elasticsearch = "<7.0.0,>=6.0.0"
+requests = "*"
+python-decouple = "*"
+
+[requires]
+python_version = "3.6"
