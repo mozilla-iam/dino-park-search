@@ -1,0 +1,19 @@
+version: '3'
+services:
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.2
+    environment:
+      - discovery.type=single-node
+  search:
+    build:
+      context: .
+      dockerfile: docker/dev.Dockerfile
+    environment:
+      - FLASK_APP=dinopark_search:create_app
+      - SECRET_KEY=unique-snowflake
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+    links:
+      - es
