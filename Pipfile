@@ -5,6 +5,7 @@ name = "pypi"
 
 [dev-packages]
 ipdb = "*"
+"flake8" = "*"
 
 [packages]
 flask = "*"
