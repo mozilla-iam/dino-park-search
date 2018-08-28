@@ -11,6 +11,7 @@ flask = "*"
 elasticsearch = "<7.0.0,>=6.0.0"
 requests = "*"
 python-decouple = "*"
+iam-profile-faker = "*"
 
 [requires]
 python_version = "3.6"
