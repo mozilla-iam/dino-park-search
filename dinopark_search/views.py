@@ -1,6 +1,4 @@
-import json
-
-from flask import Blueprint
+from flask import Blueprint, json, request
 from flask.json import jsonify
 
 from elasticsearch import Elasticsearch
@@ -17,9 +15,9 @@ def get_es_client():
     return es
 
 
-@blueprint.route('/profiles')
-def get_profiles():
-    """Get profile by user_id."""
+@blueprint.route('/profiles', methods=['GET'])
+def get_all_profiles():
+    """Get all profiles."""
 
     es = get_es_client()
     query = {
@@ -31,11 +29,26 @@ def get_profiles():
     return jsonify(res['hits']['hits'])
 
 
-@blueprint.route('/profiles/query/<query_json>')
-def search_profiles_by_query(query_json):
-    """Get profile by user_id."""
+@blueprint.route('/profiles/query', methods=['GET'])
+def search_profiles_by_query():
+    """Get profiles based on ES DSL query."""
 
-    query = json.loads(query_json)
+    query = json.loads(request.data)
     es = get_es_client()
     res = es.search(index=settings.ES_DINOPARK_INDEX, body=query)
     return jsonify(res['hits']['hits'])
+
+
+@blueprint.route('/profiles/index', methods=['POST'])
+def index_profile():
+    """Index an object to ES."""
+
+    obj = request.get_json()
+    es = get_es_client()
+    result = es.index(
+        index=settings.ES_WEBCOMPAT_INDEX,
+        doc_type='dinopark_profile_v2',
+        id=obj['user_id']['value'],
+        body=obj
+    )
+    return jsonify(res)
