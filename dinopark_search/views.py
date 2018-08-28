@@ -1,3 +1,5 @@
+import json
+
 from flask import Blueprint
 from flask.json import jsonify
 
@@ -29,10 +31,11 @@ def get_profiles():
     return jsonify(res['hits']['hits'])
 
 
-@blueprint.route('/profiles/query/<query>')
-def search_profiles_by_query(query):
+@blueprint.route('/profiles/query/<query_json>')
+def search_profiles_by_query(query_json):
     """Get profile by user_id."""
 
+    query = json.loads(query_json)
     es = get_es_client()
     res = es.search(index=settings.ES_DINOPARK_INDEX, body=query)
     return jsonify(res['hits']['hits'])
