@@ -1,6 +1,6 @@
 from flask import Flask
 
-from dinopark_search import views
+from dinopark_search import commands, views
 
 
 def create_app(config_object='dinopark_search.settings'):
@@ -15,5 +15,8 @@ def create_app(config_object='dinopark_search.settings'):
 
     # Register app blueprints
     app.register_blueprint(views.blueprint)
+
+    # Register custom commands
+    app.cli.add_command(commands.populate_fake_data)
 
     return app
