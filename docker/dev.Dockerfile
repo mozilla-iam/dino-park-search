@@ -5,10 +5,10 @@ WORKDIR /code
 COPY Pipfile.lock /code/
 COPY Pipfile /code/
 
-# Install dependencies
+# Install dev dependencies
 RUN pip install pipenv && pipenv install --system --deploy --dev
 
-# Default command to run app
+# Default command to run app using testserver
 CMD ["flask", "run", "--host=0.0.0.0"]
 
 # Copy codebase to docker image
