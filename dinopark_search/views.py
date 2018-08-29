@@ -25,7 +25,12 @@ def get_all_profiles():
             'match_all': {}
         }
     }
-    res = es.search(index=settings.ES_DINOPARK_INDEX, body=query)
+    res = es.search(
+        index=settings.ES_DINOPARK_INDEX,
+        body=query,
+        from_=request.args.get('from', 0),
+        size=request.args.get('size', settings.ES_DINOPARK_RESULT_SIZE)
+    )
     return jsonify(res['hits']['hits'])
 
 
@@ -35,7 +40,12 @@ def search_profiles_by_query():
 
     query = json.loads(request.data)
     es = get_es_client()
-    res = es.search(index=settings.ES_DINOPARK_INDEX, body=query)
+    res = es.search(
+        index=settings.ES_DINOPARK_INDEX,
+        body=query,
+        from_=request.args.get('from', 0),
+        size=request.args.get('size', settings.ES_DINOPARK_RESULT_SIZE)
+    )
     return jsonify(res['hits']['hits'])
 
 
@@ -51,4 +61,4 @@ def index_profile():
         id=obj['user_id']['value'],
         body=obj
     )
-    return jsonify(res)
+    return jsonify(result)
