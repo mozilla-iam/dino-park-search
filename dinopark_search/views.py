@@ -56,7 +56,7 @@ def index_profile():
     obj = request.get_json()
     es = get_es_client()
     result = es.index(
-        index=settings.ES_WEBCOMPAT_INDEX,
+        index=settings.ES_DINOPARK_INDEX,
         doc_type='dinopark_profile_v2',
         id=obj['user_id']['value'],
         body=obj
