@@ -1,0 +1,6 @@
+.git
+node_modules/
+.dockerignore
+Dockerfile
+myke.yml
+k8s/
