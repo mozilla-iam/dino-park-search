@@ -1,7 +1,7 @@
-project: dino-tree
+project: dino-park-search
 desc: The orgchart service of DinoPark
 env:
-  name: dino-tree
+  name: dino-park-search
   image: mozillaparsys/dino-park-search
 tasks:
   package:

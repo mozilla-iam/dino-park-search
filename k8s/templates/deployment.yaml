@@ -18,13 +18,8 @@ spec:
     spec:
       containers:
         - name: {{ .Values.name }}
-          image: mozillaparsys/{{ .Values.name }}:{{ .rev }}
-          imagePullPolicy:
-          {{- if eq .Values.env "dev" -}}
-            IfNotPresent
-          {{ else }}
-            Always
-          {{- end }}
+          image: mozillaparsys/{{ .Values.name }}:{{ .Values.rev }}
+          imagePullPolicy: IfNotPresent
           resources:
             requests:
               memory: 512Mi
@@ -34,6 +29,6 @@ spec:
             - containerPort: 8889
           env:
             - name: DUMMY_TIMESTAMP
-              value: "{{ .now.Unix }}"
+              value: "{{ now.Unix }}"
             - name: ELASTIC_HOST
               value: "{{ .Values.elastic_host }}"
