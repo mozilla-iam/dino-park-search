@@ -11,10 +11,10 @@ tasks:
     cmd: docker run --rm -ti --name {{ .name }} {{ .image }}
 
   run-k8s:
-    cmd: qdht -f k8s/values.yaml -f k8s/values/prod.yaml | kubectl apply -f -
+    cmd: qdht -f k8s/values.yaml -f k8s/values/prod.yaml k8s/ | kubectl apply -f -
 
   run-dev:
-    cmd: qdht -f k8s/values.yaml -f k8s/values/dev.yaml | kubectl apply -f -
+    cmd: qdht -f k8s/values.yaml -f k8s/values/dev.yaml k8s/ | kubectl apply -f -
 
   run-local:
     cmd: npm run dev
