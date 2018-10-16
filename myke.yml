@@ -2,7 +2,7 @@ project: dino-tree
 desc: The orgchart service of DinoPark
 env:
   name: dino-tree
-  image: mozillaparsys/dino-tree
+  image: mozillaparsys/dino-park-search
 tasks:
   package:
     cmd: docker build -t {{ .image }} .
@@ -11,7 +11,10 @@ tasks:
     cmd: docker run --rm -ti --name {{ .name }} {{ .image }}
 
   run-k8s:
-    cmd: kubectl apply -f k8s/chart/
+    cmd: qdht -f k8s/values.yaml -f k8s/values/prod.yaml | kubectl apply -f -
+
+  run-dev:
+    cmd: qdht -f k8s/values.yaml -f k8s/values/dev.yaml | kubectl apply -f -
 
   run-local:
     cmd: npm run dev
