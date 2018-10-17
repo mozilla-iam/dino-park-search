@@ -1,6 +1,7 @@
 .git
 node_modules/
 .dockerignore
+.gitignore
 Dockerfile
 myke.yml
 k8s/
