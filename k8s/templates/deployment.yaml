@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.name }}
-          image: mozillaparsys/{{ .Values.name }}:{{ .Values.rev }}
+          image: {{ .Values.docker_registry | default "mozillaparsys" }}/{{ .Values.name }}:{{ .Values.rev }}
           imagePullPolicy: IfNotPresent
           resources:
             requests:
@@ -28,7 +28,7 @@ spec:
           ports:
             - containerPort: 8889
           env:
-            - name: DUMMY_TIMESTAMP
-              value: "{{ now.Unix }}"
+            - name: FORCE_UPDATE
+              value: "{{ .Values.force_update | default 0 }}"
             - name: ELASTIC_HOST
               value: "{{ .Values.elastic_host }}"
