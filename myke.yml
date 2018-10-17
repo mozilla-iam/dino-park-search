@@ -1,0 +1,35 @@
+project: dino-park-search
+desc: The orgchart service of DinoPark
+env:
+  name: dino-park-search
+  image: mozillaparsys/dino-park-search
+tasks:
+  package:
+    cmd: docker build -t {{ .image }} .
+  
+  run-docker:
+    cmd: docker run --rm -ti --name {{ .name }} {{ .image }}
+
+  run-k8s:
+    cmd: qdht -f k8s/values.yaml -f k8s/values/staging.yaml k8s/ | kubectl apply -f -
+
+  run-dev:
+    cmd: qdht -f k8s/values.yaml -f k8s/values/dev.yaml k8s/ | kubectl apply -f -
+
+  run-local:
+    cmd: npm run dev
+  
+  test:
+    cmd: npm run test
+  
+  test-all:
+    cmd: $myke setup _lint test _coverage
+
+  _lint:
+    cmd: npm run pretest
+  
+  _coverage:
+    cmd: npm run coverage
+  
+  setup:
+    cmd: npm install 

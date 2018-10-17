@@ -1,0 +1,48 @@
+{
+  "name": "dino-tree",
+  "version": "0.1.0",
+  "description": "The org chart service for DinoPark.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node -r esm index.js",
+    "pretest": "eslint --ignore-path .gitignore .",
+    "test": "mocha -r esm",
+    "coverage": "nyc mocha -r esm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mozilla-iam/dino-tree.git"
+  },
+  "author": "Florian Merz <fmerz@mozilla.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/mozilla-iam/dino-tree/issues"
+  },
+  "homepage": "https://github.com/mozilla-iam/dino-tree#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "convict": "^4.3.2",
+    "elasticsearch": "^15.1.1",
+    "esm": "^3.0.84",
+    "express": "^4.16.3",
+    "express-fileupload": "^1.0.0-alpha.1",
+    "nyc": "^12.0.2",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "mocha": "^5.2.0",
+    "mock-fs": "^4.5.0",
+    "node-mocks-http": "^1.7.2",
+    "prettier": "1.13.7",
+    "sinon": "^6.3.5",
+    "tmp": "0.0.33"
+  },
+  "directories": {
+    "lib": "lib"
+  }
+}

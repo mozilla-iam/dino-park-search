@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "node"
+before_script:
+  - mkdir -p $HOME/.bin
+  - export PATH=$PATH:$HOME/.bin/
+  - wget -qO $HOME/.bin/myke https://github.com/fiji-flo/myke/releases/download/0.9.11/myke-0.9.11-x86_64-unknown-linux-musl
+  - chmod +x $HOME/.bin/myke
+install:
+  - npm install
+script:
+  - myke test-all
