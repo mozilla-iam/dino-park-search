@@ -14,24 +14,24 @@ describe("filter JSON objects (default filter)", () => {
     });
   }
 
-  it("default filter echoes objects", () => {
+  it("true filter echoes objects", () => {
     let jo = {
       a: [],
       b: [1]
     };
-    let res = filterJsonObject(jo);
+    let res = filterJsonObject(jo, LEVELS.public, () => true);
     chai.expect(res).to.be.deep.equal(jo);
   });
 
-  it("default filter echoes simple arrays", () => {
+  it("true filter echoes simple arrays", () => {
     let jo = [1, 2];
-    let res = filterJsonObject(jo);
+    let res = filterJsonObject(jo, LEVELS.public, () => true);
     chai.expect(res).to.be.deep.equal(jo);
   });
 
-  it("default filter filters nulls in arrays", () => {
+  it("true filter filters nulls in arrays", () => {
     let jo = { a: [1, 2, { b: 3 }], c: 4 };
-    let res = filterJsonObject(jo);
+    let res = filterJsonObject(jo, LEVELS.public, () => true);
     chai.expect(res).to.be.deep.equal(jo);
   });
 
