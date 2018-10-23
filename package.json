@@ -1,7 +1,7 @@
 {
-  "name": "dino-tree",
+  "name": "dino-park-search",
   "version": "0.1.0",
-  "description": "The org chart service for DinoPark.",
+  "description": "The search service for DinoPark.",
   "main": "index.js",
   "scripts": {
     "dev": "node -r esm index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mozilla-iam/dino-tree.git"
+    "url": "git+https://github.com/mozilla-iam/dino-park-search.git"
   },
   "author": "Florian Merz <fmerz@mozilla.com>",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/mozilla-iam/dino-tree/issues"
+    "url": "https://github.com/mozilla-iam/dino-park-search/issues"
   },
-  "homepage": "https://github.com/mozilla-iam/dino-tree#readme",
+  "homepage": "https://github.com/mozilla-iam/dino-park-search#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "convict": "^4.3.2",
