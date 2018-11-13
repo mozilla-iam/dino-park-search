@@ -152,7 +152,7 @@ describe("Express handlers", () => {
     const handle = handlers.createDeleteHandler();
     const req = createRequest({
       method: "POST",
-      params: { userId: "user1" }
+      params: { dinoId: "user1" }
     });
     const res = createResponse({
       eventEmitter: EventEmitter
@@ -184,7 +184,7 @@ describe("Express handlers", () => {
     const handle = handlers.createDeleteHandler();
     const req = createRequest({
       method: "POST",
-      params: { userId: "user1" }
+      params: { dinoId: "user1" }
     });
     const res = createResponse({
       eventEmitter: EventEmitter
