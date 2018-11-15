@@ -4,7 +4,6 @@ env:
   variables:
     IMAGE_NAME: dino-park-search
     DOCKER_REGISTRY: 320464205386.dkr.ecr.us-west-2.amazonaws.com
-    ROLE_ARN: arn:aws:iam::320464205386:role/dino-park-staging
 
 phases:
   install:
@@ -39,4 +38,4 @@ phases:
     commands:
       - echo "Finding appropriate deployment environment"
       - echo "Environment is ${DEPLOY_ENV}"
-      - helm template -f k8s/values.yaml -f k8s/values/$DEPLOY_ENV.yaml --set docker_registry=$DOCKER_REGISTRY,rev=$COMMIT_SHA,assume_role=$ROLE_ARN k8s/ | kubectl --token $DEPLOY_TOKEN apply -f -
+      - helm template -f k8s/values.yaml -f k8s/values/$DEPLOY_ENV.yaml --set docker_registry=$DOCKER_REGISTRY,rev=$COMMIT_SHA k8s/ | kubectl --token $DEPLOY_TOKEN apply -f -

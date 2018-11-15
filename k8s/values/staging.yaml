@@ -1,3 +1,4 @@
 env: staging
 namespace: dinopark-staging
 elastic_host: https://vpc-mozillians-es-dinopark-jpa2viislh2qiinin4lpcgum3a.us-west-2.es.amazonaws.com
+assume_role: arn:aws:iam::320464205386:role/dino-park-staging
