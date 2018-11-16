@@ -5,3 +5,5 @@ node_modules/
 Dockerfile
 myke.yml
 k8s/
+.nyc_output/
+.vscode/

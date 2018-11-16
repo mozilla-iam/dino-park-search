@@ -40,5 +40,22 @@ spec:
               value: "{{ .Values.force_update | default 0 }}"
             - name: ELASTIC_HOST
               value: "{{ .Values.elastic_host }}"
-            - name: ELASTIC_AWS
-              value: {{ .Values.elastic_aws }}
+            {{ if eq .Values.env "staging" -}}
+            - name: AWS_DEFAULT_REGION
+              value: "{{ .Values.aws_region }}"
+            - name: AWS_SDK_LOAD_CONFIG
+              value: "true"
+            - name: AWS_PROFILE
+              value: "es"
+            {{- end }}
+          {{ if eq .Values.env "staging" -}}
+          volumeMounts:
+            - name: dino-park-elastic
+              mountPath: /root/.aws/
+          {{- end }}
+      {{ if eq .Values.env "staging" -}}
+      volumes:
+        - name: dino-park-elastic
+          secret:
+            secretName: dino-park-elastic
+      {{- end }}
