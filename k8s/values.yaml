@@ -2,3 +2,4 @@ name: dino-park-search
 namespace: dino-park
 rev: latest
 elastic_host: elastic-service:9200
+elastic_aws: false

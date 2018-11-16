@@ -40,3 +40,5 @@ spec:
               value: "{{ .Values.force_update | default 0 }}"
             - name: ELASTIC_HOST
               value: "{{ .Values.elastic_host }}"
+            - name: ELASTIC_AWS
+              value: {{ .Values.elastic_aws }}
