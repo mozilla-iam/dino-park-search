@@ -8,7 +8,6 @@ env:
 phases:
   install:
     commands:
-      - apt update && apt install -y apt-transport-https curl
       - curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
       - echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
       - apt update && apt install -y kubectl
@@ -18,8 +17,6 @@ phases:
       - curl -O https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator
       - chmod +x aws-iam-authenticator
       - mv aws-iam-authenticator /usr/local/bin/
-      - apt update && apt install -y python3-pip
-      - pip3 install awscli
       - echo "Configuring kubectl"
   pre_build:
     commands:
