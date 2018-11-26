@@ -25,9 +25,23 @@ describe("constructor", () => {
     const storage = await new Storage(TEST_CONFIG, es).init();
     storage.should.exist;
   });
+});
 
-  it("constructor success", async () => {
+describe("fuzzy", () => {
+  it("fuzz up two strings", async () => {
     const q = "foo bar";
+    const query = Storage._fuzzUp(q);
+    query.should.be.equal("(foo~1 + bar*) | (foo~1 + bar~1)");
+  });
+
+  it("don't fuzz up one char", () => {
+    const q = "9";
+    const query = Storage._fuzzUp(q);
+    query.should.be.equal("9*");
+  });
+
+  it("trim whitespace", () => {
+    const q = "foo bar ";
     const query = Storage._fuzzUp(q);
     query.should.be.equal("(foo~1 + bar*) | (foo~1 + bar~1)");
   });
