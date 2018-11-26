@@ -40,6 +40,18 @@ describe("fuzzy", () => {
     query.should.be.equal("9*");
   });
 
+  it("don't fuzz up two chars", () => {
+    const q = "fo";
+    const query = Storage._fuzzUp(q);
+    query.should.be.equal("fo*");
+  });
+
+  it("fuzz up three chars", () => {
+    const q = "foo";
+    const query = Storage._fuzzUp(q);
+    query.should.be.equal("( + foo*) | ( + foo~1)");
+  });
+
   it("trim whitespace", () => {
     const q = "foo bar ";
     const query = Storage._fuzzUp(q);
