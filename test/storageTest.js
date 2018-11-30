@@ -29,9 +29,9 @@ describe("constructor", () => {
 
 describe("fuzzy", () => {
   it("fuzz up two strings", async () => {
-    const q = "foo bar";
+    const q = "foo bar 2000";
     const query = Storage._fuzzUp(q);
-    query.should.be.equal("(foo~1 + bar*) | (foo~1 + bar~1)");
+    query.should.be.equal("(foo~1 + bar~1 + 2000*) | (foo~1 + bar~1 + 2000~1)");
   });
 
   it("don't fuzz up one char", () => {
@@ -53,8 +53,16 @@ describe("fuzzy", () => {
   });
 
   it("trim whitespace", () => {
-    const q = "foo bar ";
+    const q = "foo bar 2000 ";
     const query = Storage._fuzzUp(q);
-    query.should.be.equal("(foo~1 + bar*) | (foo~1 + bar~1)");
+    query.should.be.equal("(foo~1 + bar~1 + 2000*) | (foo~1 + bar~1 + 2000~1)");
+  });
+
+  it("2 terms", () => {
+    const q = "foo bar";
+    const query = Storage._fuzzUp(q);
+    query.should.be.equal(
+      "(foo* + bar*) | (foo* + bar~1) | (foo~1 + bar*) | (foo~1 + bar~1)"
+    );
   });
 });
