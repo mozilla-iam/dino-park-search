@@ -7,3 +7,4 @@ myke.yml
 k8s/
 .nyc_output/
 .vscode/
+**/.terraform/*

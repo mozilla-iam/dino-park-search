@@ -31,6 +31,10 @@ spec:
               memory: 1Gi
           ports:
             - containerPort: 8889
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8889
           env:
             - name: FORCE_UPDATE
               value: "{{ .Values.force_update | default 0 }}"
