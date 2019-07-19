@@ -1,4 +1,5 @@
 env: prod
 namespace: dinopark-prod
 elastic_host: https://vpc-dinopark-prod-us-west-2-zrm332ai3l362wzxzlcajligbe.us-west-2.es.amazonaws.com
+env_ELASTIC_INDEX_PREFIX: v3-dino-park-search
 env_ELASTIC_NEXT_INDEX_PREFIX: v3-dino-park-search
