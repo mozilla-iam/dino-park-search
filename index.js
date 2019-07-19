@@ -12,7 +12,7 @@ async function main() {
     logger.info(`starting to serve on port: ${cfg.port}`);
     app.run();
   } catch (e) {
-    logger.error(`Something went batshit wrong: ${e}`);
+    logger.error(`Something went wrong: ${e}`);
     process.exit(1);
   }
 }
