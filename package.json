@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/mozilla-iam/dino-park-search#readme",
   "dependencies": {
-    "aws-sdk": "^2.518.0",
+    "aws-sdk": "^2.521.0",
     "body-parser": "^1.19.0",
     "convict": "^5.1.0",
     "elasticsearch": "^16.3.0",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^6.2.2",
+    "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "mocha": "^6.2.0",
