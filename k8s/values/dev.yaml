@@ -1,4 +1,4 @@
 env: dev
 namespace: dinopark-dev
-env_ELASTIC_INDEX_PREFIX: v4-dino-park-search
+env_ELASTIC_INDEX_PREFIX: v5-dino-park-search
 env_ELASTIC_NEXT_INDEX_PREFIX: v5-dino-park-search

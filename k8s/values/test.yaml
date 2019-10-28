@@ -1,5 +1,5 @@
 env: test
 namespace: dinopark-test
 elastic_host: https://vpc-dinopark-test-us-west-2-2gru3f2h772tdqkuc5atmjy2iy.us-west-2.es.amazonaws.com
-env_ELASTIC_INDEX_PREFIX: v3-dino-park-search
+env_ELASTIC_INDEX_PREFIX: v4-dino-park-search
 env_ELASTIC_NEXT_INDEX_PREFIX: v4-dino-park-search
