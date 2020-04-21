@@ -18,19 +18,19 @@ describe("Everything configy", () => {
       mock.restore();
     });
 
-    it("validate valid config", done => {
+    it("validate valid config", (done) => {
       tmp.file((_, path, fd) =>
         promisify(fs.write)(fd, JSON.stringify(TEST_CONFIG))
           .then(() => load(path) && done())
-          .catch(e => done(e))
+          .catch((e) => done(e))
       );
     });
 
-    it("error on empty config", done => {
+    it("error on empty config", (done) => {
       tmp.file((_, path, fd) =>
         promisify(fs.write)(fd, JSON.stringify({}))
           .then(() => (() => load(path)).should.throw() && done())
-          .catch(e => done(e))
+          .catch((e) => done(e))
       );
     });
 

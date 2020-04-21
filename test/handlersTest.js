@@ -14,28 +14,28 @@ describe("Express handlers", () => {
   it("createBulkHandler", async () => {
     const files = {
       data: {
-        data: "[]"
-      }
+        data: "[]",
+      },
     };
     const cage = {
-      bulkInsert: async profiles => {
+      bulkInsert: async (profiles) => {
         profiles.length.should.be.equal(0);
         return {};
-      }
+      },
     };
     const handlers = new Handlers(cage);
     const handle = handlers.createBulkHandler();
     const req = createRequest({ method: "POST", files });
     const res = createResponse({
-      eventEmitter: EventEmitter
+      eventEmitter: EventEmitter,
     });
 
-    const result = new Promise(resolve => {
+    const result = new Promise((resolve) => {
       res.on("end", () => {
         res._isEndCalled().should.be.true;
         res.statusCode.should.be.equal(200);
         JSON.parse(res._getData()).should.be.deep.equal({
-          status: "updated"
+          status: "updated",
         });
         resolve();
       });
@@ -49,27 +49,27 @@ describe("Express handlers", () => {
   it("createBulkHandler fails", async () => {
     const files = {
       data: {
-        data: "[]"
-      }
+        data: "[]",
+      },
     };
     const cage = {
       bulkInsert: async () => {
         return Promise.reject("FAIL");
-      }
+      },
     };
     const handlers = new Handlers(cage);
     const handle = handlers.createBulkHandler();
     const req = createRequest({ method: "POST", files });
     const res = createResponse({
-      eventEmitter: EventEmitter
+      eventEmitter: EventEmitter,
     });
 
-    const result = new Promise(resolve => {
+    const result = new Promise((resolve) => {
       res.on("end", () => {
         res._isEndCalled().should.be.true;
         res.statusCode.should.be.equal(503);
         JSON.parse(res._getData()).should.be.deep.equal({
-          error: "FAIL"
+          error: "FAIL",
         });
         resolve();
       });
@@ -83,24 +83,24 @@ describe("Express handlers", () => {
   it("createUpdateHandler", async () => {
     const body = {};
     const cage = {
-      updateDino: async profile => {
+      updateDino: async (profile) => {
         profile.should.be.deep.equal({});
         return {};
-      }
+      },
     };
     const handlers = await new Handlers(cage);
     const handle = handlers.createUpdateHandler();
     const req = createRequest({ method: "POST", body });
     const res = createResponse({
-      eventEmitter: EventEmitter
+      eventEmitter: EventEmitter,
     });
 
-    const result = new Promise(resolve => {
+    const result = new Promise((resolve) => {
       res.on("end", () => {
         res._isEndCalled().should.be.true;
         res.statusCode.should.be.equal(200);
         JSON.parse(res._getData()).should.be.deep.equal({
-          status: "updated"
+          status: "updated",
         });
         resolve();
       });
@@ -116,21 +116,21 @@ describe("Express handlers", () => {
     const cage = {
       updateDino: async () => {
         return Promise.reject("FAIL");
-      }
+      },
     };
     const handlers = new Handlers(cage);
     const handle = handlers.createUpdateHandler();
     const req = createRequest({ method: "POST", body });
     const res = createResponse({
-      eventEmitter: EventEmitter
+      eventEmitter: EventEmitter,
     });
 
-    const result = new Promise(resolve => {
+    const result = new Promise((resolve) => {
       res.on("end", () => {
         res._isEndCalled().should.be.true;
         res.statusCode.should.be.equal(503);
         JSON.parse(res._getData()).should.be.deep.equal({
-          error: "FAIL"
+          error: "FAIL",
         });
         resolve();
       });
@@ -143,27 +143,27 @@ describe("Express handlers", () => {
 
   it("createDeleteHandler", async () => {
     const cage = {
-      deleteDino: async userId => {
+      deleteDino: async (userId) => {
         userId.should.be.equal("user1");
         return {};
-      }
+      },
     };
     const handlers = new Handlers(cage);
     const handle = handlers.createDeleteHandler();
     const req = createRequest({
       method: "POST",
-      params: { dinoId: "user1" }
+      params: { dinoId: "user1" },
     });
     const res = createResponse({
-      eventEmitter: EventEmitter
+      eventEmitter: EventEmitter,
     });
 
-    const result = new Promise(resolve => {
+    const result = new Promise((resolve) => {
       res.on("end", () => {
         res._isEndCalled().should.be.true;
         res.statusCode.should.be.equal(200);
         JSON.parse(res._getData()).should.be.deep.equal({
-          status: "deleted"
+          status: "deleted",
         });
         resolve();
       });
@@ -178,24 +178,24 @@ describe("Express handlers", () => {
     const cage = {
       deleteDino: async () => {
         return Promise.reject("FAIL");
-      }
+      },
     };
     const handlers = new Handlers(cage);
     const handle = handlers.createDeleteHandler();
     const req = createRequest({
       method: "POST",
-      params: { dinoId: "user1" }
+      params: { dinoId: "user1" },
     });
     const res = createResponse({
-      eventEmitter: EventEmitter
+      eventEmitter: EventEmitter,
     });
 
-    const result = new Promise(resolve => {
+    const result = new Promise((resolve) => {
       res.on("end", () => {
         res._isEndCalled().should.be.true;
         res.statusCode.should.be.equal(503);
         JSON.parse(res._getData()).should.be.deep.equal({
-          error: "FAIL"
+          error: "FAIL",
         });
         resolve();
       });
@@ -216,25 +216,25 @@ describe("Search Handlers", () => {
         which.should.be.equal("all");
 
         return { dinos: [] };
-      }
+      },
     };
     const handlers = new Handlers(cage);
     const handle = handlers.createSimpleSearchQueryHandler();
     const req = createRequest({
       method: "GET",
       params: { scope: "public" },
-      query: { q: "foobar" }
+      query: { q: "foobar" },
     });
     const res = createResponse({
-      eventEmitter: EventEmitter
+      eventEmitter: EventEmitter,
     });
 
-    const result = new Promise(resolve => {
+    const result = new Promise((resolve) => {
       res.on("end", () => {
         res._isEndCalled().should.be.true;
         res.statusCode.should.be.equal(200);
         JSON.parse(res._getData()).should.be.deep.equal({
-          dinos: []
+          dinos: [],
         });
         resolve();
       });
@@ -253,24 +253,24 @@ describe("Search Handlers", () => {
         which.should.be.equal("all");
 
         return { dinos: [] };
-      }
+      },
     };
     const handlers = new Handlers(cage);
     const handle = handlers.createSimpleSearchHandler();
     const req = createRequest({
       method: "GET",
-      params: { scope: "public", query: "foobar" }
+      params: { scope: "public", query: "foobar" },
     });
     const res = createResponse({
-      eventEmitter: EventEmitter
+      eventEmitter: EventEmitter,
     });
 
-    const result = new Promise(resolve => {
+    const result = new Promise((resolve) => {
       res.on("end", () => {
         res._isEndCalled().should.be.true;
         res.statusCode.should.be.equal(200);
         JSON.parse(res._getData()).should.be.deep.equal({
-          dinos: []
+          dinos: [],
         });
         resolve();
       });
