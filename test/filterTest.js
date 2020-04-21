@@ -17,7 +17,7 @@ describe("filter JSON objects (default filter)", () => {
   it("true filter echoes objects", () => {
     let jo = {
       a: [],
-      b: [1]
+      b: [1],
     };
     let res = filterJsonObject(jo, LEVELS.public, () => true);
     chai.expect(res).to.be.deep.equal(jo);
