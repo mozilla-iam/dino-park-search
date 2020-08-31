@@ -22,7 +22,8 @@
   "dependencies": {
     "aws-sdk": "^2.742.0",
     "body-parser": "^1.19.0",
-    "convict": "^5.2.0",
+    "convict": "^6.0.0",
+    "convict-format-with-moment": "^6.0.0",
     "elasticsearch": "^16.7.1",
     "esm": "^3.2.25",
     "express": "^4.17.1",
@@ -34,15 +35,15 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^6.8.0",
+    "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "mocha": "^7.1.1",
+    "mocha": "^8.1.3",
     "mock-fs": "^4.13.0",
     "node-mocks-http": "^1.9.0",
     "prettier": "2.1.1",
     "sinon": "^9.0.3",
-    "tmp": "0.1.0"
+    "tmp": "0.2.1"
   },
   "directories": {
     "lib": "lib"
