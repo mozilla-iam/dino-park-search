@@ -1,8 +1,8 @@
 import { promisify } from "util";
 import fs from "fs";
 
-import { load } from "../lib/config";
-import { TEST_CONFIG } from "./configs";
+import { load } from "../lib/config.js";
+import { TEST_CONFIG } from "./configs.js";
 
 import chai from "chai";
 import chaiAsPromised from "chai-as-promised";

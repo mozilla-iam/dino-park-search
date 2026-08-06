@@ -5,8 +5,8 @@ import chaiAsPromised from "chai-as-promised";
 chai.use(chaiAsPromised);
 chai.should();
 
-import { TEST_CONFIG } from "./configs";
-import Storage from "../lib/storage";
+import { TEST_CONFIG } from "./configs.js";
+import Storage from "../lib/storage.js";
 
 function makeEs() {
   class Es {

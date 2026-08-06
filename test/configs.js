@@ -1,5 +1,5 @@
 import convict from "convict";
-import { SCHEMA } from "../lib/config";
+import { SCHEMA } from "../lib/config.js";
 
 function load(configObject) {
   const config = convict(SCHEMA);

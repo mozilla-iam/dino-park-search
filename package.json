@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "description": "The search service for DinoPark.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "node -r esm index.js",
+    "dev": "node index.js",
     "pretest": "eslint --ignore-path .gitignore .",
-    "test": "mocha -r esm",
-    "coverage": "nyc mocha -r esm"
+    "test": "mocha",
+    "coverage": "nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -47,5 +48,9 @@
   },
   "directories": {
     "lib": "lib"
-  }
+  },
+  "engines": {
+    "node": ">=22.0.0 <23.0.0"
+  },
+  "packageManager": "pnpm@11.5.2"
 }

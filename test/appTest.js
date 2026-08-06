@@ -3,8 +3,8 @@ import chai from "chai";
 import chaiAsPromised from "chai-as-promised";
 import sinon from "sinon";
 
-import { TEST_CONFIG } from "./configs";
-import App from "../lib/app";
+import { TEST_CONFIG } from "./configs.js";
+import App from "../lib/app.js";
 import * as Http from "http";
 
 chai.use(chaiAsPromised);
