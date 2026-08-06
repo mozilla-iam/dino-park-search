@@ -8,7 +8,7 @@ import { createRequest, createResponse } from "node-mocks-http";
 chai.use(chaiAsPromised);
 chai.should();
 
-import Handlers from "../lib/handlers";
+import Handlers from "../lib/handlers.js";
 
 describe("Express handlers", () => {
   it("createBulkHandler", async () => {

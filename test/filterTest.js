@@ -4,7 +4,7 @@ import chaiAsPromised from "chai-as-promised";
 chai.use(chaiAsPromised);
 chai.should();
 
-import { LEVELS, filterJsonObject } from "../lib/filter";
+import { LEVELS, filterJsonObject } from "../lib/filter.js";
 
 describe("filter JSON objects (default filter)", () => {
   for (const prim of [null, true, false, 1, 1.1, "foobar", ""]) {

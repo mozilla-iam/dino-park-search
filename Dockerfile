@@ -1,8 +1,9 @@
-FROM node:14-bullseye-slim
+FROM node:22-bullseye-slim
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install --production
+COPY package*.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN corepack enable \
+ && pnpm install --prod
 COPY . /app
-CMD ["node", "-r", "esm", "index.js"]
+CMD ["node", "index.js"]

@@ -1,5 +1,5 @@
-import { load, logger } from "./lib/config";
-import App from "./lib/app";
+import App from "./lib/app.js";
+import { load, logger } from "./lib/config.js";
 
 let app;
 
