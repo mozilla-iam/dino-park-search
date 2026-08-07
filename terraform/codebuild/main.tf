@@ -56,22 +56,6 @@ resource "aws_codebuild_project" "build" {
   }
 }
 
-# Unomment this section if you do want to build automatically on push
-resource "aws_codebuild_webhook" "webhook" {
-  project_name = aws_codebuild_project.build.name
-  filter_group {
-    filter {
-      type    = "EVENT"
-      pattern = "PUSH"
-    }
-
-    filter {
-      type    = "HEAD_REF"
-      pattern = "(^refs/heads/master$|^refs/tags/.*-(prod|test))"
-    }
-  }
-}
-
 #---
 # IAM configuration
 #---
